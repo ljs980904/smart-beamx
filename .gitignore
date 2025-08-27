@@ -8,6 +8,10 @@ yarn-error.log*
 dist/
 build/
 unpackage/
+src/
+
+# Vercel相关
+.vercel
 
 # 环境变量
 .env
