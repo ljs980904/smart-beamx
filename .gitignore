@@ -8,7 +8,13 @@ yarn-error.log*
 dist/
 build/
 unpackage/
-src/
+src/*
+!src/*.json
+!src/*.js
+!src/*.vue
+!src/*.scss
+!src/pages
+!src/static
 
 # Vercel相关
 .vercel
