@@ -3,7 +3,11 @@ import uni from '@dcloudio/vite-plugin-uni'
 
 export default defineConfig({
   plugins: [
-    uni(),
+    uni({
+      vueOptions: {
+        ssr: false
+      }
+    }),
   ],
   server: {
     port: 3000,
@@ -12,6 +16,10 @@ export default defineConfig({
   build: {
     target: 'es6',
     minify: 'terser',
-    sourcemap: false
+    sourcemap: false,
+    ssr: false
+  },
+  define: {
+    'process.env.UNI_PLATFORM': JSON.stringify('h5')
   }
 })
