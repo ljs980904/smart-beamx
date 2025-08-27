@@ -1,0 +1,12 @@
+{
+  "name": "smartbeamx-vercel",
+  "version": "1.0.0",
+  "description": "SmartBeamX Vercel 部署版本",
+  "scripts": {
+    "build": "node build-for-vercel.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.x"
+  }
+}
