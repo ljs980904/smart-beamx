@@ -1,6 +1,6 @@
 <template>
   <view class="faq-page">
-  <!--  <text class="page-title">常见问题</text> -->
+    <view class="page-nav"><view class="nav-back" @click="goBack"><text class="back-icon">‹</text></view><text class="page-title">常见问题</text></view>
     
     <view class="faq-list">
       <view 
@@ -43,6 +43,14 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      const pages = getCurrentPages && getCurrentPages()
+      if (pages && pages.length > 1) {
+        uni.navigateBack({ delta: 1 })
+      } else {
+        uni.switchTab({ url: '/pages/tabBar/my/my' })
+      }
+    },
     toggleExpand(index) {
       const expandedIndex = this.expandedItems.indexOf(index)
       if (expandedIndex > -1) {
@@ -59,12 +67,12 @@ export default {
 </script>
 
 <style scoped>
-.faq-page {
-  background-color: #000000;
-  min-height: 100vh;
-  color: #ffffff;
-  padding: 20px;
-}
+.faq-page { position: relative; background-color:#000; min-height:100vh; color:#fff; padding:20px; }
+.faq-page::before { content:''; position:absolute; inset:0; background:url('/static/icons/background.svg') center/cover no-repeat; opacity:.99; pointer-events:none; z-index:0; }
+.page-nav { position: sticky; top:0; text-align:center; padding:16px 0; z-index:2; }
+.page-title { font-size:20px; color:#fff; }
+.nav-back { position:absolute; left:16pt; top:8pt; width:32pt; height:32pt; display:flex; align-items:center; justify-content:center; color:#fff; }
+.back-icon { font-size:22pt; line-height:1; }
 
 .page-title {
   font-size: 24px;

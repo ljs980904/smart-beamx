@@ -1,14 +1,9 @@
 import { defineConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
-import path from 'path'
 
 export default defineConfig({
   plugins: [
-    uni({
-      vueOptions: {
-        ssr: false
-      }
-    }),
+    uni(),
   ],
   server: {
     port: 3000,
@@ -17,19 +12,9 @@ export default defineConfig({
   build: {
     target: 'es6',
     minify: 'terser',
-    sourcemap: false,
-    ssr: false
+    sourcemap: false
   },
   define: {
-    'process.env.UNI_PLATFORM': JSON.stringify('h5')
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './')
-    }
-  },
-  // 指定uniapp配置文件位置
-  optimizeDeps: {
-    entries: ['./manifest.json', './pages.json']
+    global: 'globalThis',
   }
 })

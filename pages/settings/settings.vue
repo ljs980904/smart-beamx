@@ -1,11 +1,11 @@
 <template>
   <view class="settings-page">
+    <view class="page-nav"><view class="nav-back" @click="goBack"><text class="back-icon">‹</text></view><text class="page-title">设置</text></view>
     <!-- 语言和通知设置容器 -->
     <view class="settings-group">
       <!-- 语言设置 -->
-      <view class="setting-item" @click="showLanguageModal = true">
+      <view class="setting-item" @click="goLanguage">
         <view class="setting-info">
-          <text class="setting-icon">🌐</text>
           <text class="setting-label">语言设置</text>
         </view>
         <view class="setting-control">
@@ -17,15 +17,10 @@
       <!-- 消息通知 -->
       <view class="setting-item">
         <view class="setting-info">
-          <text class="setting-icon">🔔</text>
           <text class="setting-label">消息通知</text>
         </view>
         <view class="setting-control">
-          <switch 
-            :checked="notificationEnabled" 
-            @change="toggleNotification"
-            color="#007AFF"
-          />
+          <switch :checked="notificationEnabled" @change="toggleNotification" color="#FF6B35" />
         </view>
       </view>
     </view>
@@ -33,16 +28,12 @@
     <!-- 版本信息容器 -->
     <view class="settings-group">
       <!-- 版本信息 -->
-      <view class="setting-item" @click="checkUpdate">
+      <view class="setting-item" @click="goUpdate">
         <view class="setting-info">
-          <text class="setting-icon">📱</text>
-          <view class="version-info">
-            <text class="setting-label">版本号</text>
-            <text class="version-number">{{ appVersion }}</text>
-          </view>
+          <text class="setting-label">版本号</text>
         </view>
         <view class="setting-control">
-          <text class="setting-value">检查更新</text>
+          <text class="version-number">{{ appVersion }}</text>
           <text class="setting-arrow">></text>
         </view>
       </view>
@@ -94,6 +85,16 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      const pages = getCurrentPages && getCurrentPages()
+      if (pages && pages.length > 1) {
+        uni.navigateBack({ delta: 1 })
+      } else {
+        uni.switchTab({ url: '/pages/tabBar/my/my' })
+      }
+    },
+    goLanguage() { uni.navigateTo({ url: '/pages/settings/language' }) },
+    goUpdate() { uni.navigateTo({ url: '/pages/settings/update' }) },
     switchLanguage(language) {
       this.currentLanguage = language
       this.closeLanguageModal()
@@ -134,12 +135,12 @@ export default {
 </script>
 
 <style scoped>
-.settings-page {
-  background-color: #000000;
-  min-height: 100vh;
-  color: #ffffff;
-  padding: 20px;
-}
+.settings-page { position:relative; background:#000; min-height:100vh; color:#fff; padding:20px; }
+.settings-page::before { content:''; position:absolute; inset:0; background:url('/static/icons/background.svg') center/cover no-repeat; opacity:.99; pointer-events:none; z-index:0; }
+.page-nav { position: sticky; top:0; text-align:center; padding:16px 0; z-index:2; }
+.page-title { font-size:20px; color:#fff; }
+.nav-back { position:absolute; left:16pt; top:8pt; width:32pt; height:32pt; display:flex; align-items:center; justify-content:center; color:#fff; }
+.back-icon { font-size:22pt; line-height:1; }
 
 .settings-group {
   background-color: #1a1a1a;
@@ -154,7 +155,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid #333333;
+  border-bottom: none;
 }
 
 .setting-item:last-child {

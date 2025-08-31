@@ -1,5 +1,6 @@
 <template>
       <view class="feedback-page">
+        <view class="page-nav"><view class="nav-back" @click="goBack"><text class="back-icon">‹</text></view><text class="page-title">问题反馈</text></view>
       <!-- 反馈表单 -->
       <view class="form-container">
         <!-- 订单号 -->
@@ -62,7 +63,7 @@
                 class="upload-placeholder" 
                 @click="uploadImage"
               >
-                <view class="upload-icon">📷</view>
+                <image class="upload-icon" src="/static/icons/upload.svg" mode="widthFix"></image>
                 <text class="upload-text">上传图片</text>
               </view>
             </view>
@@ -118,6 +119,14 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      const pages = getCurrentPages && getCurrentPages()
+      if (pages && pages.length > 1) {
+        uni.navigateBack({ delta: 1 })
+      } else {
+        uni.switchTab({ url: '/pages/tabBar/my/my' })
+      }
+    },
     // 上传图片
     uploadImage() {
       uni.chooseImage({
@@ -208,12 +217,12 @@ export default {
 </script>
 
 <style scoped>
-.feedback-page {
-  background: #000000;
-  min-height: 100vh;
-  color: #ffffff;
-  padding: 0;
-}
+.feedback-page { position:relative; background:#000; min-height:100vh; color:#fff; padding:0; }
+.feedback-page::before { content:''; position:absolute; inset:0; background:url('/static/icons/background.svg') center/cover no-repeat; opacity:.99; pointer-events:none; z-index:0; }
+.page-nav { position: sticky; top:0; text-align:center; padding:16px 0; z-index:2; }
+.page-title { font-size:20px; color:#fff; }
+.nav-back { position:absolute; left:16pt; top:8pt; width:32pt; height:32pt; display:flex; align-items:center; justify-content:center; color:#fff; }
+.back-icon { font-size:22pt; line-height:1; }
 
 /* 表单容器 */
 .form-container {
@@ -253,12 +262,15 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 14pt;
   box-sizing: border-box;
   outline: none;
   transition: all 0.3s ease;
   backdrop-filter: blur(20px);
   min-height: 56px;
+  height: auto;
+  word-wrap: break-word;
+  overflow: visible;
 }
 
 .form-input:focus {
@@ -268,14 +280,14 @@ export default {
 }
 
 .form-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 16px;
+  color: rgba(26, 26, 26, 1);
+  font-size: 14pt;
 }
 
 /* 文本域样式 */
 .form-textarea {
   width: 100%;
-  min-height: 180px;
+  min-height: 100px;
   padding: 24px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -289,6 +301,9 @@ export default {
   line-height: 1.8;
   transition: all 0.3s ease;
   backdrop-filter: blur(20px);
+  height: auto;
+  word-wrap: break-word;
+  overflow: visible;
 }
 
 .form-textarea:focus {
@@ -374,9 +389,10 @@ export default {
 }
 
 .upload-icon {
-  font-size: 24px;
+  width: 24px;
+  height: 24px;
   margin-bottom: 4px;
-  color: rgba(255, 255, 255, 0.6);
+  opacity: 0.6;
 }
 
 .upload-text {

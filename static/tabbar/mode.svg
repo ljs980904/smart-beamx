@@ -1,4 +1,11 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 6V2L7 7L12 12V8C15.31 8 18 10.69 18 14C18 15.01 17.75 15.97 17.3 16.8L18.76 18.26C19.54 17.03 20 15.57 20 14C20 9.58 16.42 6 12 6Z" fill="#666666"/>
-<path d="M12 18V22L17 17L12 12V16C8.69 16 6 13.31 6 10C6 8.99 6.25 8.03 6.7 7.2L5.24 5.74C4.46 6.97 4 8.43 4 10C4 14.42 7.58 18 12 18Z" fill="#666666"/>
+<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Linear / Settings, Fine Tuning / Tuning Square 2">
+<path id="Vector" d="M4.75 12C4.75 8.22876 4.75 6.34315 5.92157 5.17157C7.09315 4 8.97876 4 12.75 4C16.5212 4 18.4069 4 19.5784 5.17157C20.75 6.34315 20.75 8.22876 20.75 12C20.75 15.7712 20.75 17.6569 19.5784 18.8284C18.4069 20 16.5212 20 12.75 20C8.97876 20 7.09315 20 5.92157 18.8284C4.75 17.6569 4.75 15.7712 4.75 12Z" stroke="white" stroke-width="1.5"/>
+<path id="Vector_2" d="M11.15 13.5996C12.0337 13.5996 12.75 14.316 12.75 15.1996C12.75 16.0833 12.0337 16.7996 11.15 16.7996C10.2664 16.7996 9.55005 16.0833 9.55005 15.1996C9.55005 14.316 10.2664 13.5996 11.15 13.5996Z" stroke="white" stroke-width="1.5"/>
+<circle id="Vector_3" cx="1.6" cy="1.6" r="1.6" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 15.95 10.4004)" stroke="white" stroke-width="1.5"/>
+<path id="Vector_4" d="M14.35 15.2002L18.35 15.2002" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+<path id="Vector_5" d="M11.15 8.7998L7.15002 8.7998" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+<path id="Vector_6" d="M7.15002 15.2002L7.95002 15.2002" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+<path id="Vector_7" d="M18.35 8.7998L17.55 8.7998" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+</g>
 </svg>

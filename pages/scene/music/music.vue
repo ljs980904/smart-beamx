@@ -1,9 +1,8 @@
 <template>
-  <view class="scene-page">
-    <!-- 顶部切换 速度/音乐 + LED 标签 + 电源 -->
+  <view class="music-page">
     <view class="top-bar">
-      <view class="switches" @click="goMusic"><text class="ico">🎵</text><view class="sep"></view><text class="ico">🎙</text></view>
-      <text class="title">速度</text>
+      <text class="ico">🎵</text><view class="sep"></view><text class="ico">🎙</text>
+      <text class="title">音乐</text>
       <text class="power">⏻</text>
     </view>
     <scroll-view class="chips" scroll-x>
@@ -17,37 +16,24 @@
 
     <view class="canvas"></view>
 
-    <view class="speed-panel">
-      <text class="now">当前速度</text>
-      <text class="val">0 mph</text>
-      <text class="full">⤢</text>
+    <view class="player-mini" @click="goPlayer">
+      <text class="note">🎵</text>
+      <text class="name">两只老虎</text>
+      <text class="play">▶</text>
+      <text class="list" @click.stop="goList">🪗</text>
     </view>
   </view>
 </template>
 
 <script>
-export default {
-  name: 'ScenePage',
-  data() {
-    return { chips:['LED 1','LED 2','LED 3','LED 4','LED 5'], curChip:0, seg:0 }
-  },
-  methods: {
-    selectScene(index) {},
-    goMusic(){ uni.navigateTo({ url:'/pages/scene/music/music' }) }
-  },
-  onLoad() {
-    console.log('场景页面加载')
-  }
-}
+export default { data:()=>({ chips:['LED 1','LED 2','LED 3','LED 4','LED 5'], curChip:0, seg:0 }), methods:{ goList(){ uni.navigateTo({ url:'/pages/scene/music/list' }) }, goPlayer(){ uni.navigateTo({ url:'/pages/scene/music/player' }) } } }
 </script>
 
 <style scoped>
-.scene-page{background:#000;min-height:100vh;color:#fff}
+.music-page{background:#000;min-height:100vh;color:#fff}
 .top-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 12px;backdrop-filter:saturate(160%) blur(8px)}
-.switches{display:flex;align-items:center;gap:10px}
 .sep{width:1px;height:18px;background:transparent}
 .title{font-size:18px;font-weight:700}
-.power{font-size:18px}
 .chips{white-space:nowrap;padding:6px 10px}
 .chip{display:inline-flex;align-items:center;justify-content:center;padding:8px 14px;margin-right:10px;background:#1a1a1a;border:1px solid #333;border-radius:10px}
 .chip.active{background:#2a2a2a}
@@ -55,8 +41,10 @@ export default {
 .seg-btn{flex:1;text-align:center;padding:10px 0;color:#cfcfcf}
 .seg-btn.on{background:#ff5a24;color:#fff}
 .canvas{height:260px;background:linear-gradient(90deg,red,orange,yellow,green,cyan,blue,purple)}
-.speed-panel{position:fixed;left:12px;right:12px;bottom:82px;background:linear-gradient(180deg,#0b0b0b,#121212);border:1px solid #1f1f1f;border-radius:24px;padding:12px 16px;display:flex;align-items:center;gap:14px}
-.now{color:#cfcfcf}
-.val{margin-left:auto;margin-right:8px}
-.full{opacity:.6}
+.player-mini{position:fixed;left:12px;right:12px;bottom:82px;background:linear-gradient(180deg,#0b0b0b,#121212);border:1px solid #1f1f1f;border-radius:24px;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.note{background:#1c1c1c;border:1px solid #333;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center}
+.name{flex:1}
+.play{margin-right:12px}
+.list{opacity:.8}
 </style>
+

@@ -1,5 +1,9 @@
 <template>
   <view class="about-page">
+    <view class="page-nav">
+      <view class="nav-back" @click="goBack"><text class="back-icon">‹</text></view>
+      <text class="page-title">关于我们</text>
+    </view>
     <!-- 主要内容容器 -->
     <view class="main-container">
       <!-- 应用图标和信息 -->
@@ -198,6 +202,14 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      const pages = getCurrentPages && getCurrentPages()
+      if (pages && pages.length > 1) {
+        uni.navigateBack({ delta: 1 })
+      } else {
+        uni.switchTab({ url: '/pages/tabBar/my/my' })
+      }
+    },
     showServiceAgreement() {
       this.showServiceModal = true
     },
@@ -219,11 +231,25 @@ export default {
 
 <style scoped>
 .about-page {
+  position: relative;
   background-color: #000000;
   min-height: 100vh;
   color: #ffffff;
   padding: 20px;
 }
+.about-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/static/icons/background.svg') center/cover no-repeat;
+  opacity: 0.99;
+  pointer-events: none;
+  z-index: 0;
+}
+.page-nav { position: sticky; top: 0; text-align: center; padding: 16px 0; z-index: 2; }
+.page-title { font-size: 20px; color: #ffffff; }
+.nav-back { position: absolute; left: 16pt; top: 8pt; width: 32pt; height: 32pt; display: flex; align-items: center; justify-content: center; color: #ffffff; }
+.back-icon { font-size: 22pt; line-height: 1; }
 
 /* 主要内容容器 */
 .main-container {
@@ -232,6 +258,8 @@ export default {
   border-radius: 12px;
   margin-bottom: 12px;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 /* 应用图标和信息 */
@@ -240,7 +268,6 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 40px 20px 32px 20px;
-  border-bottom: 1px solid #333333;
 }
 
 .app-icon {
@@ -269,7 +296,6 @@ export default {
 /* 关于平台描述 */
 .about-content {
   padding: 20px;
-  border-bottom: 1px solid #333333;
 }
 
 .about-title {
@@ -297,7 +323,6 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid #333333;
   cursor: pointer;
   transition: all 0.3s ease;
 }

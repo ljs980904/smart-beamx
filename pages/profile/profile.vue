@@ -1,7 +1,11 @@
 <template>
   <view class="profile-page">
+    <view class="profile-nav">
+      <view class="nav-back" @click="goBack"><text class="back-icon">‹</text></view>
+      <text class="nav-title">个人信息</text>
+    </view>
     <!-- 个人信息主页面 -->
-    <view v-if="currentPage === 'main'" class="profile-card">
+    <view class="profile-card">
       <!-- 头像区域 -->
       <view class="profile-item" @click="changeAvatar">
         <text class="profile-label">头像</text>
@@ -47,126 +51,7 @@
       </view>
     </view>
 
-    <!-- 手机号编辑页面 -->
-    <view v-if="currentPage === 'phoneEdit'" class="edit-page">
-      <view class="edit-header">
-        <text class="edit-title">请输入新的手机号</text>
-      </view>
-      <view class="edit-content">
-        <input 
-          class="edit-input"
-          v-model="editForm.phone"
-          placeholder="188 8888 8888"
-          type="number"
-          maxlength="11"
-        />
-        <button class="edit-btn" @click="nextStepPhone">下一步</button>
-      </view>
-    </view>
 
-    <!-- 手机验证码页面 -->
-    <view v-if="currentPage === 'phoneVerify'" class="edit-page">
-      <view class="edit-header">
-        <text class="edit-title">请输入新的手机号</text>
-        <text class="edit-subtitle">{{ editForm.phone }}</text>
-      </view>
-      <view class="edit-content">
-        <view class="code-input-container">
-          <input 
-            v-for="(digit, index) in verifyCode" 
-            :key="index"
-            class="code-input"
-            :value="digit"
-            @input="inputCode($event, index)"
-            type="number"
-            maxlength="1"
-          />
-        </view>
-        <button class="edit-btn" @click="submitPhoneChange">提交</button>
-      </view>
-    </view>
-
-    <!-- 更换头像页面 -->
-    <view v-if="currentPage === 'avatarEdit'" class="edit-page">
-      <view class="edit-content avatar-edit">
-        <view class="avatar-preview">
-          <image class="preview-avatar" :src="editForm.avatar" mode="aspectFill"></image>
-        </view>
-        <button class="edit-btn" @click="selectAvatar">更换头像</button>
-      </view>
-    </view>
-
-    <!-- 验证身份页面 -->
-    <view v-if="currentPage === 'verifyChoice'" class="edit-page">
-      <view class="edit-header">
-        <text class="edit-title">验证身份</text>
-      </view>
-      <view class="edit-content">
-        <button class="verify-option" @click="verifyByPhone">手机号码验证</button>
-        <button class="verify-option" @click="verifyByEmail">邮箱验证</button>
-      </view>
-    </view>
-
-    <!-- 邮箱设置页面 -->
-    <view v-if="currentPage === 'emailEdit'" class="edit-page">
-      <view class="edit-header">
-        <text class="edit-title">设置邮箱</text>
-        <text class="edit-subtitle">{{ editForm.email }}</text>
-      </view>
-      <view class="edit-content">
-        <input 
-          class="edit-input"
-          v-model="editForm.newEmail"
-          placeholder="user@gmail.com"
-          type="email"
-        />
-        <button class="edit-btn" @click="completeEmailChange">完成</button>
-      </view>
-    </view>
-
-    <!-- 邮箱验证码页面 -->
-    <view v-if="currentPage === 'emailVerify'" class="edit-page">
-      <view class="edit-header">
-        <text class="edit-title">设置邮箱</text>
-        <text class="edit-subtitle">{{ editForm.newEmail }}</text>
-      </view>
-      <view class="edit-content">
-        <view class="code-input-container">
-          <input 
-            v-for="(digit, index) in emailVerifyCode" 
-            :key="index"
-            class="code-input"
-            :value="digit"
-            @input="inputEmailCode($event, index)"
-            type="number"
-            maxlength="1"
-          />
-        </view>
-        <button class="edit-btn" @click="submitEmailChange">提交</button>
-      </view>
-    </view>
-
-    <!-- 设置密码页面 -->
-    <view v-if="currentPage === 'passwordEdit'" class="edit-page">
-      <view class="edit-header">
-        <text class="edit-title">设置密码</text>
-      </view>
-      <view class="edit-content">
-        <input 
-          class="edit-input password-input"
-          v-model="editForm.password"
-          placeholder="请输入密码"
-          type="password"
-        />
-        <input 
-          class="edit-input password-input"
-          v-model="editForm.confirmPassword"
-          placeholder="再次输入密码"
-          type="password"
-        />
-        <button class="edit-btn" @click="submitPasswordChange">完成</button>
-      </view>
-    </view>
   </view>
 </template>
 
@@ -175,7 +60,7 @@ export default {
   name: 'ProfilePage',
   data() {
     return {
-      currentPage: 'main', // main, phoneEdit, phoneVerify, avatarEdit, verifyChoice, emailEdit, emailVerify, passwordEdit
+      // 已移除单页切换逻辑，改为独立路由页面
       userInfo: {
         avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
         nickname: '小米洋',
@@ -196,28 +81,32 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      console.log('个人信息页面返回按钮点击')
+      uni.switchTab({ 
+        url: '/pages/tabBar/my/my',
+        success: () => {
+          console.log('成功跳转到我的页面')
+        },
+        fail: (err) => {
+          console.log('跳转失败:', err)
+          // 备用方案：直接返回
+          uni.navigateBack({ delta: 1 })
+        }
+      })
+    },
     // 编辑昵称
     editNickname() {
-      uni.showModal({
-        title: '修改昵称',
-        editable: true,
-        content: this.userInfo.nickname,
-        success: (res) => {
-          if (res.confirm && res.content) {
-            this.userInfo.nickname = res.content
-            uni.showToast({
-              title: '昵称修改成功',
-              icon: 'success'
-            })
-          }
-        }
+      uni.navigateTo({
+        url: `/pages/profile/nickname?current=${encodeURIComponent(this.userInfo.nickname)}`
       })
     },
 
     // 编辑手机号
     editPhone() {
-      this.currentPage = 'phoneEdit'
-      this.editForm.phone = ''
+      uni.navigateTo({
+        url: `/pages/profile/phone?current=${encodeURIComponent(this.userInfo.phone)}`
+      })
     },
 
     // 手机号下一步
@@ -231,6 +120,10 @@ export default {
       }
       this.currentPage = 'phoneVerify'
       this.verifyCode = ['1', '8', '7', '7', '7', '9']
+    },
+    onPhoneInput(e) {
+      const onlyDigits = (e.detail.value || '').replace(/\D+/g, '')
+      this.editForm.phone = onlyDigits
     },
 
     // 输入验证码
@@ -263,8 +156,9 @@ export default {
 
     // 更换头像
     changeAvatar() {
-      this.editForm.avatar = this.userInfo.avatar
-      this.currentPage = 'avatarEdit'
+      uni.navigateTo({
+        url: `/pages/profile/avatar?current=${encodeURIComponent(this.userInfo.avatar)}`
+      })
     },
 
     // 选择头像
@@ -287,7 +181,9 @@ export default {
 
     // 编辑邮箱
     editEmail() {
-      this.currentPage = 'verifyChoice'
+      uni.navigateTo({
+        url: `/pages/profile/email?current=${encodeURIComponent(this.userInfo.email)}`
+      })
     },
 
     // 手机号验证
@@ -341,9 +237,9 @@ export default {
 
     // 设置密码
     setPassword() {
-      this.currentPage = 'passwordEdit'
-      this.editForm.password = ''
-      this.editForm.confirmPassword = ''
+      uni.navigateTo({
+        url: '/pages/profile/password'
+      })
     },
 
     // 提交密码变更
@@ -369,26 +265,53 @@ export default {
         title: '密码设置成功',
         icon: 'success'
       })
+    },
+
+    // 提交昵称变更
+    submitNicknameChange() {
+      const nickname = (this.editForm.nickname || '').trim()
+      if (!nickname) {
+        uni.showToast({ title: '请输入昵称', icon: 'none' })
+        return
+      }
+      this.userInfo.nickname = nickname
+      this.currentPage = 'main'
+      uni.showToast({ title: '昵称修改成功', icon: 'success' })
     }
   },
   onLoad() {
     console.log('个人信息页面加载')
+    // 监听子页面的数据更新
+    uni.$on('updateNickname', (data) => {
+      this.userInfo.nickname = data.nickname
+    })
+    uni.$on('updatePhone', (data) => {
+      this.userInfo.phone = data.phone
+    })
+    uni.$on('updateEmail', (data) => {
+      this.userInfo.email = data.email
+    })
+    uni.$on('updateAvatar', (data) => {
+      this.userInfo.avatar = data.avatar
+    })
+  },
+  onUnload() {
+    // 移除事件监听
+    uni.$off('updateNickname')
+    uni.$off('updatePhone') 
+    uni.$off('updateEmail')
+    uni.$off('updateAvatar')
   }
 }
 </script>
 
 <style scoped>
-.profile-page {
-  background: #000000;
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(120, 120, 120, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(120, 120, 120, 0.1) 0%, transparent 50%);
-  background-size: 800px 800px, 600px 600px;
-  background-position: -200px -200px, 300px 300px;
-  min-height: 100vh;
-  color: #ffffff;
-  padding: 0;
-}
+.profile-page { position:relative; background:#000; min-height:100vh; color:#fff; padding:0; }
+.profile-page::before { content:''; position:absolute; inset:0; background:url('/static/icons/background.svg') center/cover no-repeat; opacity:.99; pointer-events:none; z-index:0; }
+.profile-nav { position: sticky; top:0; height: 44pt; z-index: 2; }
+.nav-back { position:absolute; left:16pt; top:16pt; width:32pt; height:32pt; display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer; z-index:10; }
+.back-icon { font-size:22pt; line-height:1; }
+.nav-title { position:absolute; left:0; right:0; top:20pt; text-align:center; color:#ffffff; font-size:20px; font-weight:600; }
 
 /* 个人信息卡片 */
 .profile-card {
@@ -453,6 +376,8 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 40px 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .edit-header {
@@ -492,6 +417,8 @@ export default {
   outline: none;
   transition: all 0.3s ease;
 }
+
+.phone-input { ime-mode: disabled; }
 
 .edit-input:focus {
   border-color: rgba(255, 255, 255, 0.2);

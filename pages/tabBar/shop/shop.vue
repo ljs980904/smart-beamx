@@ -1,55 +1,46 @@
 <template>
   <view class="shop-page">
-    <text class="page-title">智能商城</text>
-    
-    <view class="product-grid">
-      <view 
-        v-for="product in products" 
-        :key="product.id"
-        class="product-card"
-        @click="viewProduct(product)"
-      >
-        <image class="product-image" :src="product.image" mode="aspectFill"></image>
-        <view class="product-info">
-          <text class="product-name">{{ product.name }}</text>
-          <text class="product-price">¥{{ product.price }}</text>
-        </view>
+    <!-- 顶部横幅 + 城市 + 搜索条 -->
+    <view class="banner">
+      <image class="banner-img" :src="bannerUrl" mode="aspectFill" />
+      <view class="top-bar">
+        <text class="loc">📍 {{ city }}</text>
+        <view class="search" @click="goSearch">🔍 请输入关键字</view>
       </view>
     </view>
+
+    <!-- 分类chips -->
+    <scroll-view class="chip-row" scroll-x>
+      <view v-for="(c,i) in cats" :key="i" class="chip" :class="{active: curCat===i}" @click="curCat=i">{{ c }}</view>
+    </scroll-view>
+
+    <!-- 商品栅格 两列 -->
+    <scroll-view scroll-y class="goods-area">
+      <view class="card" v-for="g in goods" :key="g.id" @click="viewProduct(g)">
+        <image class="cover" :src="g.img" mode="aspectFill" />
+        <view class="info">
+          <text class="title">{{ g.title }}</text>
+          <view class="price-row">
+            <text class="price">$ {{ g.price }}</text>
+            <text class="cart">🛒</text>
+          </view>
+          <text class="asin">ASIN: {{ g.asin }}</text>
+        </view>
+      </view>
+    </scroll-view>
   </view>
-</template>
+ </template>
 
 <script>
 export default {
   name: 'ShopPage',
   data() {
     return {
-      products: [
-        {
-          id: 1,
-          name: 'SmartBeam Pro',
-          price: 2999,
-          image: '/static/icons/product1.png'
-        },
-        {
-          id: 2,
-          name: '配件套装',
-          price: 199,
-          image: '/static/icons/product2.png'
-        },
-        {
-          id: 3,
-          name: '保养包',
-          price: 99,
-          image: '/static/icons/product3.png'
-        },
-        {
-          id: 4,
-          name: '智能控制器',
-          price: 599,
-          image: '/static/icons/product4.png'
-        }
-      ]
+      city: '深圳市',
+      bannerUrl: 'https://images.unsplash.com/photo-1612010167108-3e6bff0e3c70?q=80&w=1600',
+      cats: ['小车','卡车','吉普','摩托车','越野','其他'],
+      curCat: 0,
+      goods: []
     }
   },
   methods: {
@@ -58,63 +49,40 @@ export default {
         title: `查看${product.name}`,
         icon: 'none'
       })
+    },
+    goSearch(){ uni.navigateTo({ url:'/pages/points/search' }) },
+    mockGoods(){
+      const imgs=[
+        'https://images.unsplash.com/photo-1545665277-5937489579f2?q=80&w=800',
+        'https://images.unsplash.com/photo-1612010167108-3e6bff0e3c70?q=80&w=800',
+        'https://images.unsplash.com/photo-1584624274612-9b3e2e5c12e2?q=80&w=800',
+        'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?q=80&w=800'
+      ]
+      return imgs.map((img,i)=>({ id:i+1, img, title:'LED 轮环灯RGB 带 APP 和遥控霓虹灯 带转向信号和制动功', price:'68.00', asin:'BOCXNW7X2', name:'LED 灯' }))
     }
   },
   onLoad() {
-    console.log('商城页面加载')
+    this.goods = this.mockGoods()
   }
 }
 </script>
 
 <style scoped>
-.shop-page {
-  background-color: #000000;
-  min-height: 100vh;
-  color: #ffffff;
-  padding: 20px;
-}
-
-.page-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 24px;
-  display: block;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.product-card {
-  background-color: #1a1a1a;
-  border-radius: 12px;
-  border: 1px solid #333333;
-  overflow: hidden;
-}
-
-.product-image {
-  width: 100%;
-  height: 120px;
-  background-color: #333333;
-}
-
-.product-info {
-  padding: 16px;
-}
-
-.product-name {
-  font-size: 16px;
-  color: #ffffff;
-  margin-bottom: 8px;
-  display: block;
-}
-
-.product-price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #007AFF;
-}
+.shop-page{background:#000;min-height:100vh;color:#fff}
+.banner{position:relative;height:180px}
+.banner-img{position:absolute;inset:0;width:100%;height:100%}
+.top-bar{position:absolute;left:12px;right:12px;top:12px;display:flex;align-items:center;gap:10px}
+.loc{background:rgba(0,0,0,.5);border:1px solid #333;border-radius:16px;padding:6px 10px}
+.search{flex:1;background:#2a2a2a;border:1px solid #444;border-radius:22px;color:#cfcfcf;padding:8px 14px}
+.chip-row{white-space:nowrap;padding:12px 12px 8px}
+.chip{display:inline-flex;align-items:center;justify-content:center;padding:8px 16px;margin-right:10px;background:#2a2a2a;border:1px solid #444;border-radius:12px;color:#cfcfcf}
+.chip.active{background:#3a3a3a;color:#fff}
+.goods-area{padding:6px 10px 90px}
+.card{background:#121212;border:1px solid #2f2f2f;border-radius:18px;overflow:hidden;margin:0 6px 12px 6px;width:calc(50% - 12px);display:inline-block;vertical-align:top}
+.cover{width:100%;height:180px}
+.info{padding:10px}
+.title{display:block;line-height:1.4}
+.price-row{display:flex;align-items:center;justify-content:space-between;margin:6px 0}
+.price{color:#ff4d4f;font-weight:800}
+.asin{opacity:.7}
 </style>

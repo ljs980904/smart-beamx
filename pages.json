@@ -3,7 +3,16 @@
     {
       "path": "pages/tabBar/home/home",
       "style": {
-        "navigationBarTitleText": "首页",
+        "navigationBarTitleText": "智能汽车灯",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/device/connect/connect",
+      "style": {
+        "navigationBarTitleText": "连接设备",
         "navigationBarBackgroundColor": "#000000",
         "navigationBarTextStyle": "white",
         "backgroundColor": "#000000"
@@ -28,6 +37,69 @@
       }
     },
     {
+      "path": "pages/scene/acceleration",
+      "style": {
+        "navigationBarTitleText": "加速度",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/scene/sensitivity",
+      "style": {
+        "navigationBarTitleText": "灵敏度",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/scene/music/music",
+      "style": {
+        "navigationBarTitleText": "音乐",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/scene/music/list",
+      "style": {
+        "navigationBarTitleText": "播放列表",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/scene/music/player",
+      "style": {
+        "navigationBarTitleText": "播放器",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/shop/search",
+      "style": {
+        "navigationBarTitleText": "搜索",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/mode/setting",
+      "style": {
+        "navigationBarTitleText": "模式设置",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
       "path": "pages/tabBar/shop/shop",
       "style": {
         "navigationBarTitleText": "商城",
@@ -39,39 +111,21 @@
     {
       "path": "pages/tabBar/my/my",
       "style": {
-        "navigationBarTitleText": "个人中心",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
-        "backgroundColor": "#000000",
-        "app-plus": {
-          "titleNView": {
-            "buttons": [
-              {
-                "text": "⚙",
-                "fontSize": "18px",
-                "color": "#ffffff",
-                "width": "40px"
-              }
-            ]
-          }
-        }
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
       }
     },
     {
       "path": "pages/profile/profile",
       "style": {
-        "navigationBarTitleText": "个人信息",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
     {
       "path": "pages/feedback/feedback",
       "style": {
-        "navigationBarTitleText": "问题反馈",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
@@ -85,47 +139,113 @@
       }
     },
     {
-      "path": "pages/invite/invite",
+      "path": "pages/points/rules",
       "style": {
-        "navigationBarTitleText": "邀请好友",
+        "navigationBarTitleText": "积分奖励规则",
         "navigationBarBackgroundColor": "#000000",
         "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/points/rulesText",
+      "style": {
+        "navigationBarTitleText": "积分奖励规则",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/points/search",
+      "style": {
+        "navigationBarTitleText": "积分商城",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/invite/invite",
+      "style": {
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
     {
       "path": "pages/faq/faq",
       "style": {
-        "navigationBarTitleText": "常见问题",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
     {
       "path": "pages/about/about",
       "style": {
-        "navigationBarTitleText": "关于我们",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
     {
       "path": "pages/settings/settings",
       "style": {
-        "navigationBarTitleText": "设置",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/settings/language",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/settings/update",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/profile/nickname",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/profile/phone",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/profile/email",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/profile/password",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "path": "pages/profile/avatar",
+      "style": {
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     },
     {
       "path": "pages/login/login",
       "style": {
-        "navigationBarTitleText": "登录",
-        "navigationBarBackgroundColor": "#000000",
-        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundColor": "#000000"
       }
     }
@@ -145,31 +265,31 @@
       {
         "pagePath": "pages/tabBar/home/home",
         "iconPath": "static/tabbar/home.svg",
-        "selectedIconPath": "static/tabbar/home-active.svg",
+        "selectedIconPath": "static/tabbar/home.svg",
         "text": "首页"
       },
       {
         "pagePath": "pages/tabBar/mode/mode",
         "iconPath": "static/tabbar/mode.svg",
-        "selectedIconPath": "static/tabbar/mode-active.svg",
+        "selectedIconPath": "static/tabbar/mode.svg",
         "text": "模式"
       },
       {
         "pagePath": "pages/tabBar/scene/scene",
         "iconPath": "static/tabbar/scene.svg",
-        "selectedIconPath": "static/tabbar/scene-active.svg",
+        "selectedIconPath": "static/tabbar/scene.svg",
         "text": "场景"
       },
       {
         "pagePath": "pages/tabBar/shop/shop",
         "iconPath": "static/tabbar/shop.svg",
-        "selectedIconPath": "static/tabbar/shop-active.svg",
+        "selectedIconPath": "static/tabbar/shop.svg",
         "text": "商城"
       },
       {
         "pagePath": "pages/tabBar/my/my",
         "iconPath": "static/tabbar/my.svg",
-        "selectedIconPath": "static/tabbar/my-active.svg",
+        "selectedIconPath": "static/tabbar/my.svg",
         "text": "我的"
       }
     ]

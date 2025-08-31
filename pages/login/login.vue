@@ -1,11 +1,18 @@
 <template>
   <view class="login-page">
+    <!-- 顶部悬浮：返回 + 标题（个人中心） -->
+    <view class="login-nav">
+      <text class="login-title">个人中心</text>
+      <view class="login-settings" @click="goSettings">
+        <image class="menu-icon-svg" src="/static/icons/settings.svg" mode="widthFix" style="width:22pt;height:22pt"></image>
+      </view>
+    </view>
     <!-- 头部logo和欢迎信息 -->
     <view class="header-section">
       <view class="logo-container">
         <view class="logo">logo</view>
+        <text class="welcome-text">欢迎登录</text>
       </view>
-      <text class="welcome-text">欢迎登录</text>
     </view>
 
     <!-- 登录表单 -->
@@ -83,6 +90,9 @@ export default {
     }
   },
   methods: {
+    goSettings() {
+      uni.navigateTo({ url: '/pages/settings/settings' })
+    },
     // 切换协议同意状态
     toggleAgreement() {
       this.agreedToTerms = !this.agreedToTerms
@@ -110,17 +120,13 @@ export default {
           icon: 'success'
         })
         
-        // 登录成功后返回个人中心，并传递登录成功状态
+        // 登录成功后直接切换到“我的”Tab，并通知登录状态
         setTimeout(() => {
-          uni.navigateBack({
-            delta: 1
-          })
-          // 在实际项目中，这里应该使用全局状态管理（如Vuex）来保存登录状态
-          // 这里仅做演示，通过事件通知个人中心页面更新状态
-          uni.$emit('loginSuccess', {
-            isLoggedIn: true
-          })
-        }, 1500)
+          uni.switchTab({ url: '/pages/tabBar/my/my' })
+          setTimeout(() => {
+            uni.$emit('loginSuccess', { isLoggedIn: true })
+          }, 200)
+        }, 500)
       }, 2000)
     },
 
@@ -169,28 +175,69 @@ export default {
 
 <style scoped>
 .login-page {
-  background: #000000;
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(120, 120, 120, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(120, 120, 120, 0.1) 0%, transparent 50%);
-  background-size: 800px 800px, 600px 600px;
-  background-position: -200px -200px, 300px 300px;
+  position: relative;
   min-height: 100vh;
+}
+.login-nav {
+  position: absolute;
+  top: 20pt;
+  left: 0;
+  right: 0;
+  height: 32pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+
+.login-settings {
+  position: absolute;
+  right: 16pt;
+  width: 32pt;
+  height: 32pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-title {
   color: #ffffff;
-  padding: 0;
+  font-size: 22pt;
+  letter-spacing: 0.5pt;
+}
+
+.login-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/static/icons/background.svg') center/cover no-repeat;
+  opacity: 0.99; /* 可调：0 ~ 1 */
+  pointer-events: none; /* 不拦截点击 */
+  z-index: 0;
 }
 
 /* 头部区域 */
 .header-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 80px 40px 60px 40px;
+  align-items: center; /* 默认居中 */
+  padding: 228px 40px 60px 40px; /* 1.5 倍放大（从152px到228px） */
+  position: relative;
+  z-index: 1; /* 盖住背景 */
 }
 
 .logo-container {
-  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  align-self: flex-start; /* 只让 logo-container 靠左 */
+  margin-left: 20px;      /* 控制距离屏幕左边的距离 */
+  margin-top: 60px;       /* 1.5 倍放大 */
 }
+
+
 
 .logo {
   width: 80px;
@@ -203,18 +250,23 @@ export default {
   font-size: 16px;
   color: #ffffff;
   font-weight: 500;
+
 }
 
-.welcome-text {
-  font-size: 24px;
+.header-section .welcome-text {
+  font-size: 32px !important; /* 放大“欢迎登录” */
   font-weight: 600;
   color: #ffffff;
+
+
 }
 
 /* 表单容器 */
 .form-container {
   padding: 0 40px;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .login-section {
@@ -239,7 +291,7 @@ export default {
 }
 
 .provider-text {
-  font-size: 14px;
+  font-size: 12pt;
   color: #999999;
   text-align: center;
   margin-bottom: 24px;
