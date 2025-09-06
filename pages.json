@@ -264,32 +264,32 @@
     "list": [
       {
         "pagePath": "pages/tabBar/home/home",
-        "iconPath": "static/tabbar/home.svg",
-        "selectedIconPath": "static/tabbar/home.svg",
+        "iconPath": "/static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-active.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/tabBar/mode/mode",
-        "iconPath": "static/tabbar/mode.svg",
-        "selectedIconPath": "static/tabbar/mode.svg",
+        "iconPath": "static/tabbar/mode.png",
+        "selectedIconPath": "static/tabbar/mode-active.png",
         "text": "模式"
       },
       {
         "pagePath": "pages/tabBar/scene/scene",
-        "iconPath": "static/tabbar/scene.svg",
-        "selectedIconPath": "static/tabbar/scene.svg",
+        "iconPath": "static/tabbar/scene.png",
+        "selectedIconPath": "static/tabbar/scene-active.png",
         "text": "场景"
       },
       {
         "pagePath": "pages/tabBar/shop/shop",
-        "iconPath": "static/tabbar/shop.svg",
-        "selectedIconPath": "static/tabbar/shop.svg",
+        "iconPath": "static/tabbar/shop.png",
+        "selectedIconPath": "static/tabbar/shop.png",
         "text": "商城"
       },
       {
         "pagePath": "pages/tabBar/my/my",
-        "iconPath": "static/tabbar/my.svg",
-        "selectedIconPath": "static/tabbar/my.svg",
+        "iconPath": "static/tabbar/my.png",
+        "selectedIconPath": "static/tabbar/my-active.png",
         "text": "我的"
       }
     ]
