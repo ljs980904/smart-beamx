@@ -16,8 +16,7 @@
 			<view v-if="!isLoggedIn" class="login-area" @click="goToLogin">
 				<image class="user-avatar" src="@/static/icons/my/avatar.png" mode="aspectFill"></image>
 				<text class="login-text">点击登录/注册</text>
-
-				<img class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="login-arrow" src="@/static/icons/my/back2x.png" mode="aspectFill" alt="" srcset="" />
 			</view>
 
 			<!-- 已登录状态 -->
@@ -46,7 +45,7 @@
 					</view>
 				</view>
 				<text class="menu-title">问题反馈</text>
-				<img class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
 			</view>
 
 			<view class="menu-item points-item" @click="goToPoints">
@@ -56,7 +55,7 @@
 					</view>
 				</view>
 				<text class="menu-title">积分商城</text>
-				<img class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
 			</view>
 
 			<view class="menu-item invite-item" @click="goToInvite">
@@ -66,7 +65,7 @@
 					</view>
 				</view>
 				<text class="menu-title">邀请好友</text>
-				<img class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
 			</view>
 
 			<view class="menu-item faq-item" @click="goToFAQ">
@@ -76,7 +75,7 @@
 					</view>
 				</view>
 				<text class="menu-title">常见问题</text>
-				<img class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
 			</view>
 
 			<view class="menu-item about-item" @click="goToAbout">
@@ -86,7 +85,7 @@
 					</view>
 				</view>
 				<text class="menu-title">关于我们</text>
-				<img class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
 			</view>
 
 			<!-- 临时测试登录按钮 -->
@@ -97,7 +96,7 @@
 					</view>
 				</view>
 				<text class="menu-title">{{ isLoggedIn ? '退出登录' : '测试登录' }}</text>
-				<img class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="login-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
 			</view>
 		</view>
 	</view>

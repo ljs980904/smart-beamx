@@ -9,9 +9,9 @@
         </view> -->
 				<!-- 操作行：添加设备（左） 开关（右） -->
 				<view class="ops-row">
-					<img src="@/static/icons/home/add-device2x.png" class="add-active-icon" alt="" srcset="" />
+					<image src="@/static/icons/home/add-device2x.png" class="add-active-icon" alt="" srcset="" mode="aspectFill" />
 					<text class="add-device" @click="goAddDevice">添加设备</text>
-					<img class="close" src="@/static/icons/home/close2x.png" alt="" srcset="" />
+					<image class="close" src="@/static/icons/home/close2x.png" alt="" srcset="" mode="aspectFill" />
 				</view>
 
 				<!-- 顶部设备标签 -->
@@ -23,7 +23,7 @@
 
 				<!-- LED 行下：左灯泡 右加号 -->
 				<view class="light-row">
-					<img class="light-icon" src="@/static/icons/home/light-bulb-icon.png" alt="" srcset="" />
+					<image class="light-icon" src="@/static/icons/home/light-bulb-icon.png" alt="" srcset="" mode="aspectFill" />
 					<text class="light-plus" @click="onAddLight">＋</text>
 				</view>
 			</view>
@@ -33,10 +33,10 @@
 		<view class="mode-grid">
 			<view class="mode-card" v-for="(m,idx) in modes" :key="m.id" @click="openMode(m)">
 
-				<img class="mode-icon" :src="m.icon" alt="" srcset="" />
+				<image class="mode-icon" :src="m.icon" alt="" srcset="" mode="aspectFill" />
 				<view class="mode-head">
 					<text class="mode-name">{{ m.name }}</text>
-					<img class="mode-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+					<image class="mode-arrow" src="@/static/icons/my/back2x.png" alt="" srcset=""  mode="aspectFill"/>
 				</view>
 				<view class="mode-color" :style="{background:m.bg}"></view>
 

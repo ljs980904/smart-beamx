@@ -2,7 +2,7 @@
 	<view class="settings-page">
 		<view class="page-nav">
 
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 
 			<text class="page-title">设置</text>
 		</view>
@@ -15,7 +15,7 @@
 				</view>
 				<view class="setting-control">
 
-					<img class="setting-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+					<image class="setting-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 				</view>
 			</view>
 
@@ -39,7 +39,7 @@
 				</view>
 				<view class="setting-control">
 					<text class="version-number">{{ appVersion }}</text>
-					<img class="setting-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+					<image class="setting-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 				</view>
 			</view>
 		</view>

@@ -15,7 +15,7 @@
 				<view class="days">
 					<view class="day" v-for="d in 7" :class="{done: d<=checkedDays}">
 						<text>{{d}}天</text>
-						<img src="@/static/icons/my/points-icon.png" class="point-icon" alt="" srcset="" :key="d" />
+						<image src="@/static/icons/my/points-icon.png" class="point-icon" alt="" srcset="" mode="aspectFill" :key="d" />
 					</view>
 				</view>
 				<button class="checkin-btn" :disabled="checkedToday"
@@ -27,7 +27,7 @@
 			<text class="section-title">做任务得积分</text>
 			<view class="task-row" v-for="t in tasks" :key="t.id">
 				<text class="task-name">{{ t.name }}</text>
-				<img src="@/static/icons/my/points-icon.png" class="point-img" alt="" srcset="" :key="d" />
+				<image src="@/static/icons/my/points-icon.png" class="point-img" mode="aspectFill" alt="" srcset="" :key="d" />
 				<text class="task-add">+{{ t.add }}</text>
 				<view class="task-btn" @click="takeTask(t)" :class="{claim:t.action==='做任务'}">
 					{{ t.taken ? '已领取' : (t.action || '领积分') }}

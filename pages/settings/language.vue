@@ -1,18 +1,18 @@
 <template>
 	<view class="lang-page">
 		<view class="page-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" mode="aspectFill" srcset="" />
 			<text class="page-title">语言</text>
 		</view>
 		<view class="lang-card">
 			<view class="lang-item" :class="{active: current==='zh-CN'}" @click="setLang('zh-CN')">
 				<text class="lang-name">简体中文</text>
-				<img class="ok" v-if="current==='zh-CN'" src="@/static/icons/my/check.png" alt="" srcset="" />
+				<image class="ok" v-if="current==='zh-CN'" src="@/static/icons/my/check.png" alt="" mode="aspectFill" srcset="" />
 			</view>
 			<view class="lang-item" :class="{active: current==='en-US'}" @click="setLang('en-US')">
 				<text class="lang-name">英文</text>
 
-				<img class="ok" v-if="current==='en-US'" src="@/static/icons/my/check.png" alt="" srcset="" />
+				<image class="ok" v-if="current==='en-US'" src="@/static/icons/my/check.png" alt="" srcset=""  mode="aspectFill"/>
 			</view>
 		</view>
 	</view>

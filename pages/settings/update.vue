@@ -1,7 +1,7 @@
 <template>
 	<view class="update-page">
 		<view class="page-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 			<text class="page-title">版本号</text>
 		</view>
 		<view class="update-card">
@@ -14,7 +14,7 @@
 					<view class="ver">V{{ version }}</view>
 					<view class="size">{{ sizeMB }}MB</view>
 				</view>
-				<img class="setting-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="setting-arrow" src="@/static/icons/my/back2x.png" alt="" srcset=""  mode="aspectFill"/>
 			</view>
 		</view>
 		<view class="btn-wrap">

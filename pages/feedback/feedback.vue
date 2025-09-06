@@ -1,7 +1,7 @@
 <template>
 	<view class="feedback-page">
 		<view class="page-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" /><text
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" /><text
 				class="page-title">问题反馈</text>
 		</view>
 		<!-- 反馈表单 -->

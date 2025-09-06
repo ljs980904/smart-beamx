@@ -1,23 +1,23 @@
 <template>
 	<view class="mode-page">
 		<view class="top-card">
-			<img class="mode-icon" src="@/static/icons/home/mode-1-icon2x.png" alt="" srcset="" />
+			<image class="mode-icon" src="@/static/icons/home/mode-1-icon2x.png" alt="" srcset=""  mode="aspectFill"/>
 			<view class="mode-head">
 				<text class="mode-title">模式名称1</text>
-				<img class="mode-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="mode-arrow" src="@/static/icons/my/back2x.png" alt="" srcset=""  mode="aspectFill"/>
 			</view>
 			<view class="mode-color" style="background:linear-gradient(90deg,#ff6aa6,#60d3ff)"></view>
 		</view>
-		<button class="add-btn" @click="goCreate"> <img src="@/static/icons/model/add-icon.png" class="add-active-icon"
+		<button class="add-btn" @click="goCreate"> <image src="@/static/icons/model/add-icon.png" class="add-active-icon" mode="aspectFill"
 				alt="" srcset="" /> 添加</button>
 
 		<text class="subtitle">预设</text>
 		<view class="grid">
 			<view class="mode-card" v-for="m in presets" :key="m.id" @click="open(m)">
-				<img class="mode-icon" :src="m.icon" alt="" srcset="" />
+				<image class="mode-icon" :src="m.icon" alt="" srcset=""  mode="aspectFill"/>
 				<view class="mode-head">
 					<text class="mode-title">{{ m.name }}</text>
-					<img class="mode-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+					<image class="mode-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill"  />
 				</view>
 				<view class="mode-color" :style="{background:m.bg}"></view>
 			</view>

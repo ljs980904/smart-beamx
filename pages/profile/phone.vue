@@ -1,7 +1,7 @@
 <template>
 	<view class="phone-page">
 		<view class="page-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 		</view>
 		<view class="content-title">请输入新的手机号</view>
 		<view class="input-area">

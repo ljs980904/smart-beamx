@@ -1,7 +1,7 @@
 <template>
 	<view class="nickname-page">
 		<view class="page-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" mode="aspectFill" srcset="" />
 		</view>
 		<view class="content-title">设置昵称</view>
 		<view class="input-area">

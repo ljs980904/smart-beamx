@@ -1,7 +1,7 @@
 <template>
 	<view class="about-page">
 		<view class="page-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 
 			<text class="page-title">关于我们</text>
 		</view>
@@ -28,13 +28,13 @@
 			<view class="agreements-container">
 				<view class="agreement-section" @click="showServiceAgreement">
 					<text class="agreement-text">服务协议</text>
-				<img class="agreement-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="agreement-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 				
 				</view>
 
 				<view class="agreement-section" @click="showPrivacyPolicy">
 					<text class="agreement-text">隐私协议</text>
-					<img class="agreement-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+					<image class="agreement-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
 
 				</view>
 			</view>

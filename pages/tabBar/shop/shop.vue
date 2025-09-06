@@ -8,7 +8,7 @@
 
 				<view class="search" @click="goSearch">
 					<!-- <input type="text" placeholder="请输入关键字" /> -->
-					<img class="search-icon" src="@/static/icons/shop/search2x.png" alt="" srcset="" /> 请输入关键字
+					<image class="search-icon" src="@/static/icons/shop/search2x.png" alt="" srcset="" /> 请输入关键字
 				</view>
 			</view>
 		</view>
@@ -27,7 +27,7 @@
 					<text class="title">{{ g.title }}</text>
 					<view class="price-row">
 						<text class="price">$ {{ g.price }}</text>
-						<img src="@/static/icons/shop/shopping-cart.png" class="shopping-cart" alt="" srcset="" />
+						<image src="@/static/icons/shop/shopping-cart.png" class="shopping-cart" alt="" srcset="" />
 
 					</view>
 					<text class="asin">ASIN: {{ g.asin }}</text>

@@ -1,7 +1,7 @@
 <template>
 	<view class="email-page">
 		<view class="page-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" mode="aspectFill" src="@/static/icons/my/back2x.png" alt="" srcset="" />
 
 		</view>
 		<view class="content-title">设置邮箱</view>

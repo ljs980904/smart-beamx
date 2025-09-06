@@ -1,7 +1,7 @@
 <template>
 	<view class="profile-page">
 		<view class="profile-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" mode="aspectFill" alt="" srcset="" />
 			<text class="nav-title">个人信息</text>
 		</view>
 		<!-- 个人信息主页面 -->
@@ -11,7 +11,7 @@
 				<text class="profile-label">头像</text>
 				<view class="profile-content">
 					<image class="user-avatar" :src="userInfo.avatar" mode="aspectFill"></image>
-					<img class="profile-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+					<image class="profile-arrow" src="@/static/icons/my/back2x.png" mode="aspectFill" alt="" srcset="" />
 				</view>
 			</view>
 
@@ -21,7 +21,7 @@
 				<view class="profile-content">
 					<text class="profile-value">{{ userInfo.nickname }}</text>
 			
-					<img class="profile-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+					<image class="profile-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 					
 				</view>
 			</view>
@@ -31,7 +31,7 @@
 				<text class="profile-label">手机</text>
 				<view class="profile-content">
 					<text class="profile-value">{{ userInfo.phone }}</text>
-					<img class="profile-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+					<image class="profile-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 				</view>
 			</view>
 
@@ -40,7 +40,7 @@
 				<text class="profile-label">邮箱</text>
 				<view class="profile-content">
 					<text class="profile-value">{{ userInfo.email }}</text>
-				<img class="profile-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="profile-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 				
 				</view>
 			</view>
@@ -49,7 +49,7 @@
 			<view class="profile-item" @click="setPassword">
 				<text class="profile-label">密码</text>
 				<view class="profile-content">
-				<img class="profile-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+				<image class="profile-arrow" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 				
 				</view>
 			</view>

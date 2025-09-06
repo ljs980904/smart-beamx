@@ -1,7 +1,7 @@
 <template>
 	<view class="faq-page">
 		<view class="page-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" mode="aspectFill" />
 			<text class="page-title">常见问题</text>
 		</view>
 
@@ -10,9 +10,9 @@
 				<view class="faq-question" @click="toggleExpand(index)">
 					<text class="question-text">{{ faq.question }}</text>
 					<text class="expand-icon">
-						<img v-if="expandedItems.includes(index)" class="expand-foldup-image"
+						<image v-if="expandedItems.includes(index)" class="expand-foldup-image" mode="aspectFill"
 							src="@/static/icons/my/fold-up.png" />
-						<img v-else class="expand-foldup-image" src="@/static/icons/my/expand.png" />
+						<image v-else class="expand-foldup-image" src="@/static/icons/my/expand.png" mode="aspectFill" />
 					</text>
 				</view>
 

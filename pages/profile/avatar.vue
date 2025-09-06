@@ -1,7 +1,7 @@
 <template>
 	<view class="avatar-page">
 		<view class="page-nav">
-			<img class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" alt="" srcset="" />
+			<image class="nav-back" @click="goBack" src="@/static/icons/my/back2x.png" mode="aspectFill" alt="" srcset="" />
 		</view>
 		<view class="avatar-area">
 			<image class="avatar-display" :src="avatar" mode="aspectFill" @click="selectAvatar"></image>
